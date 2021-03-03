@@ -8,7 +8,8 @@ class WhoIsCommand extends Command {
             name: 'whois',
             category: 'Roblox',
             aliases: ['profilesearch'],
-            description: 'Displays information about a certain user.'
+            description: 'Displays information about a certain user.',
+						userRoles: ['Admin']
         });
     }
 

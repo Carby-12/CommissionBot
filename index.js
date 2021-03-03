@@ -44,4 +44,4 @@ app.listen(process.env.PORT);
 
 ['command', 'event'].forEach(x => require(`./handlers/${x}`)(bot));
 
-bot.login('NzQxMjYzMzA3ODMwMzI5MzY1.Xy1BQA.9_bU58Ca3fw9aIjuZ13RoI-UgP4');
+bot.login('ODE2MDc4NTQxNTk3OTY2Mzg2.YD1uXg.jMVFQKYhSdJ6YAtHS9IOaDoPW0U');

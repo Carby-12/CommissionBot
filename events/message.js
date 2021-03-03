@@ -28,10 +28,10 @@ module.exports = class {
 
 			if (commandfile.config.botPermissions && !message.guild.me.hasPermission(commandfile.config.botPermissions)) return message.channel.send(`The \`${commandfile.config.name}\` command requires me to have the '${commandfile.config.botPermissions[0]}' permission(s).`);
 
-			if (commandfile.config.CanRank && !message.member.roles.cache.has('790005459141656587')) return message.channel.send('You do not have permission to run this command.');
-			if (commandfile.config.CanHost && !message.member.roles.cache.has('790005459083329557')) return message.channel.send('You do not have permissiont to run this command.');
 			if (commandfile.config.ownerOnly && commandfile.config.ownerOnly === true && message.author.id !== '413834975347998720') return message.channel.send(`The \`${commandfile.config.name}\` command can only be used by the bot owner`);
 			if (message.author.id !== '413834975347998720' && commandfile.config.enabled === false) return message.channel.send(`The command\`${commandfile.config.name}\` is disabled.`);
+
+			if(commandfile.config.userRoles.length >= 1 && !message.member.roles.cache.some(r => commandfile.config.userRoles.includes(r.name))) return message.channel.send('You do not have permission to run this command.');
 
     }
 

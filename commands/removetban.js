@@ -8,7 +8,7 @@ class RemoveTBanCommand extends Command {
             description: 'Remove a trello ban for a user.',
             cooldown: 10,
             category: 'Moderation',
-            userPermissions: ['BAN_MEMBERS'],
+            userRoles: ['Head Admin'],
             aliases: ['untban', 'untrelloban'],
             usage: 'untban [Roblox Username]'
         });

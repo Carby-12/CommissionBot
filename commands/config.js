@@ -11,7 +11,7 @@ class ConfigCommand extends Command {
       category: 'Setup',
       usage: 'config [prefix | group | verifiedrole | suggestionchannel | view] [(Value)]',
       ownerOnly: false,
-      userPermissions: ['MANAGE_GUILD']
+      userRoles: ['Head Admin']
     });
   }
 
@@ -28,9 +28,7 @@ class ConfigCommand extends Command {
 				break;
 			case 'group':
 				// eslint-disable-next-line no-case-declarations
-				const group = await nbx.getGroup(args[1]).catch(() => {
-					message.channel.send('There\'s no ROBLOX group with that ID.');
-				});
+				const group = await nbx.getGroup(Number(args[1])).catch(() => {});
 				if(!group) return message.channel.send('There\'s no ROBLOX group with that ID.');
 
 				await this.bot.updateGuild(message.guild, { robloxGroup: group.id });

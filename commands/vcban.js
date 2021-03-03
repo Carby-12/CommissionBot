@@ -9,7 +9,7 @@ class VcBanCommand extends Command {
 			category: 'Moderation',
 			usage: '!!vcban [Roblox Username] (Reason)',
 			ownerOnly: false,
-			userPermissions: ['BAN_MEMBERS'],
+			userRoles: ['Head Admin', 'Staff Manager'],
 			accessableby: 'Administrators'
 		});
 	}

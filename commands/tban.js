@@ -8,7 +8,7 @@ class TBanCommand extends Command {
             description: 'Trello ban a user',
             cooldown: 10,
             category: 'Moderation',
-            userPermissions: ['BAN_MEMBERS'],
+            userRoles: ['Head Admin', 'Staff Manager'],
             aliases: ['trelloban'],
             usage: 'tban [Roblox Username]'
         });

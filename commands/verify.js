@@ -27,9 +27,9 @@ class VerifyCommand extends Command {
         const guildRoles = message.guild.roles.cache.filter(c => ranks.some(f => f.name.includes(c.name))).sort((a, b) => a.rawPosition - b.rawPosition);
         const rolesToRemove = message.member.roles.cache.filter(c => guildRoles.some(f => f.name.includes(c.name)) && c.name !== rankName);
         const roles = [util.resolveRole(rankName, message.guild.roles.cache)];
-        const verifiedRole = util.resolveRole(guild.verifiedRole, message.guild.roles.cache) || util.resolveRole('Verified', message.guild.roles.cache);
+        let verifiedRole = util.resolveRole(guild.verifiedRole, message.guild.roles.cache) || util.resolveRole('Verified', message.guild.roles.cache);
         if(!verifiedRole) {
-            await message.guild.roles.create({
+            verifiedRole = await message.guild.roles.create({
                 data: {
                     name: 'Verified'
                 }
@@ -61,18 +61,18 @@ class VerifyCommand extends Command {
                 .addField('Nickname', user, true)
                 .addField('Should be added roles', givenRoles.length >= 1 ? givenRoles.map(c => c.name).join(', ') : 'None', true)
                 .addField('Should be removed roles', rolesToRemove.size >= 1 ? rolesToRemove.map(c => c.name).join(', ') : 'None')
-                .setColor(0xFF69B4)
+                .setColor('BLUE')
                 .setFooter(message.member.displayName, message.author.displayAvatarURL({ dynamic: true }))
                 .setTimestamp()
                 .setDescription('I couldn\'t change your nickname due to my permissions.');
-            return message.channel.send(`Welcome to Sugar Bowl, **${user}**!`, embed);
+            return message.channel.send(`Welcome to ${message.guild.name}, **${user}**!`, embed);
         }
         const embed = new MessageEmbed()
             .setTitle('Verification')
             .addField('Nickname', user, true)
             .addField('Added Roles', givenRoles.length >= 1 ? givenRoles.map(c => c.name).join(', ') : 'None', true)
             .addField('Removed Roles', rolesToRemove.size >= 1 ? rolesToRemove.map(c => c.name).join(', ') : 'None')
-            .setColor(0xFF69B4)
+            .setColor('BLUE')
             .setFooter(message.member.displayName, message.author.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
         message.channel.send(`Welcome to ${message.guild.name}, **${user}**!`, embed);

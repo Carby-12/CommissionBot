@@ -11,7 +11,7 @@ class UpdateCommand extends Command {
         category: 'Roblox',
         usage: 'update (User)',
         ownerOnly: false,
-        userPermissions: ['MANAGE_MESSAGES', 'MANAGE_NICKNAMES'],
+        userRoles: ['Admin'],
         botPermissions: ['MANAGE_MESSAGES', 'MANAGE_NICKNAMES'],
         cooldown: 15
       });
@@ -64,7 +64,7 @@ class UpdateCommand extends Command {
                 .addField('Nickname', user, true)
                 .addField('Should be added roles', givenRoles.length >= 1 ? givenRoles.map(c => c.name).join(', ') : 'None', true)
                 .addField('Should be removed roles', rolesToRemove.size >= 1 ? rolesToRemove.map(c => c.name).join(', ') : 'None')
-                .setColor(0xFF69B4)
+                .setColor('BLUE')
                 .setFooter(member.displayName, message.author.displayAvatarURL({ dynamic: true }))
                 .setTimestamp()
                 .setDescription('I couldn\'t change your nickname due to my permissions.');
@@ -75,7 +75,7 @@ class UpdateCommand extends Command {
             .addField('Nickname', user, true)
             .addField('Added Roles', givenRoles.length >= 1 ? givenRoles.map(c => c.name).join(', ') : 'None', true)
             .addField('Removed Roles', rolesToRemove.size >= 1 ? rolesToRemove.map(c => c.name).join(', ') : 'None')
-            .setColor(0xFF69B4)
+            .setColor('BLUE')
             .setFooter(member.displayName, message.author.displayAvatarURL({ dynamic: true }))
             .setTimestamp();
         message.channel.send(`Welcome to ${message.guild.name}, **${user}**!`, embed);

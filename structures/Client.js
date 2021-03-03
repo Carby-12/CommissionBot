@@ -17,7 +17,8 @@ module.exports = class BotClient extends Client {
 			prefix: '!',
 			robloxGroup: '0',
 			vcBans: [],
-      suggestionChannel: 'suggestions'
+      suggestionChannel: 'suggestions',
+			verifiedRole: 'Verified'
 		};
     this.db = new Keyv({ store: new KeyFile({ filename: './db/settings-121qrjvfk1t.json' }) });
     this.trello = new Trello(this.config.trelloAppKey, this.config.trelloToken);
