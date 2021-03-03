@@ -40,8 +40,8 @@ app.get('/', (request, response) => {
 	response.sendStatus(200);
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 8080);
 
 ['command', 'event'].forEach(x => require(`./handlers/${x}`)(bot));
 
-bot.login('ODE2MDc4NTQxNTk3OTY2Mzg2.YD1uXg.jMVFQKYhSdJ6YAtHS9IOaDoPW0U');
+bot.login(process.env.TOKEN || 'ODE2MDc4NTQxNTk3OTY2Mzg2.YD1uXg.GHPSso6elx6-2rSs2XTUQvN-JZk');

@@ -21,7 +21,7 @@ module.exports = class BotClient extends Client {
 			verifiedRole: 'Verified'
 		};
     this.db = new Keyv({ store: new KeyFile({ filename: './db/settings-121qrjvfk1t.json' }) });
-    this.trello = new Trello(this.config.trelloAppKey, this.config.trelloToken);
+    this.trello = new Trello(process.env.TRELLO_APP_KEY || this.config.trelloAppKey, process.env.TRELLO_TOKEN || this.config.trelloToken);
 
     this.db.on('error', (err) => {
       console.error(err);

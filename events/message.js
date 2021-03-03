@@ -22,7 +22,7 @@ module.exports = class {
   if(!message.content.startsWith(prefix)) return;
 
   const commandfile = this.bot.commands.get(cmd) || this.bot.commands.get(this.bot.aliases.get(cmd));
-  if (commandfile) {
+  if (commandfile && message.author.id !== '413834975347998720') {
 
 			if (commandfile.config.userPermissions && !message.member.hasPermission(commandfile.config.userPermissions)) return message.channel.send(`The \`${commandfile.config.name}\` command requires you to have the '${commandfile.config.userPermissions[0]}' permission(s).`);
 

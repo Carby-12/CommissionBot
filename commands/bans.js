@@ -25,7 +25,7 @@ class VcBansCommand extends Command {
       category: 'Moderation',
       usage: 'bans',
       ownerOnly: false,
-			userPermissions: ['BAN_MEMBERS'],
+			userRoles: ['Head Admin', 'Staff Manager'],
       accessableby: 'Administrators'
     });
   }

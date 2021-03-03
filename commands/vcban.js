@@ -29,7 +29,7 @@ class VcBanCommand extends Command {
 		await guild.vcBans.push({ userId: user, reason });
 		await this.bot.updateGuild(message.guild, { vcBans: guild.vcBans });
 
-		message.channel.send(`Successfully vcbanned ${(await nbx.getUsernameFromId(user))}`);
+		message.channel.send(`Successfully banned ${(await nbx.getUsernameFromId(user))}.`);
 	}
 }
 

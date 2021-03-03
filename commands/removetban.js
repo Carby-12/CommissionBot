@@ -21,7 +21,7 @@ class RemoveTBanCommand extends Command {
         const userid = await nbx.getIdFromUsername(args[0]);
         const userInfo = await nbx.getPlayerInfo({ userId: userid });
 
-        this.bot.trello.getCardsOnList(this.bot.config.bansListId, (err, cards) => {
+        this.bot.trello.getCardsOnList(process.env.BANS_LIST_ID || this.bot.config.bansListId, (err, cards) => {
             if(err) console.error(err);
 
             const ban = cards.find(c => c.name.includes(userid));
